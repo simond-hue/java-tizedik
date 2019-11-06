@@ -1,6 +1,7 @@
 package bankoop;
 
 import bankoop.bankiszolgaltatas.szamla.Hitelszamla;
+import bankoop.bankiszolgaltatas.szamla.Megtakaritasiszamla;
 import java.util.List;
 import bankoop.bankiszolgaltatas.szamla.Szamla;
 import java.util.LinkedList;
@@ -19,7 +20,16 @@ public class Bank {
             szamla = new Hitelszamla(tulajdonos, hitelkeret);
         }
         else{
-            szamla = new Megtakaritasszamla
+            szamla = new Megtakaritasiszamla(tulajdonos);
         }
+        this.bankszamlak.add(szamla);
+    }
+    
+    public long Osszegyenleg(){
+        long sum = 0;
+        for (Szamla szamla : bankszamlak) {
+            sum += szamla.getEgyenleg();
+        }
+        return sum;
     }
 }
