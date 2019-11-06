@@ -14,7 +14,7 @@ public class Bank {
         this.bankszamlak = new LinkedList<>();
     }
     
-    public void Szamlanyitas(Tulajdonos tulajdonos, int hitelkeret){
+    public Szamla Szamlanyitas(Tulajdonos tulajdonos, int hitelkeret){
         Szamla szamla;
         if(hitelkeret > 0){
             szamla = new Hitelszamla(tulajdonos, hitelkeret);
@@ -23,6 +23,7 @@ public class Bank {
             szamla = new Megtakaritasiszamla(tulajdonos);
         }
         this.bankszamlak.add(szamla);
+        return szamla;
     }
     
     public long Osszegyenleg(){
